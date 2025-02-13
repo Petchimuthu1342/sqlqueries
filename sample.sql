@@ -1,4 +1,3 @@
-Day 1
 create database pm; 
 show databases;
 show tables;
@@ -133,7 +132,30 @@ subquery max*/
   select PersonalId from cm where salary=(select max(salary)  from cm);
   select Designation,salary from cm where exists (select*from cm where salary>50000);
   select Designation,salary from cm where not exists (select*from cm where salary>15000);
+
+inner join*/
+create table studenttable(Roll_no int primary key, FirstName varchar(23),Address varchar(15),Phoneno bigint,Age int);
+insert into studenttable values(1,"mani","Bangalore",8052266425,22);
+insert into studenttable values(2,"ram","Veeravanallur",8693251470,20);
+insert into studenttable values(3,"ravi","chennai",9360841380,21);
+insert into studenttable values(4,"manikam","nellai",9563821740,19);
+insert into studenttable values(5,"valli","erode",8693250147,20);
+
+select * from studenttable;
+   select *from cm;
+   
+   Inner Join*/
+   select cm.PersonalId,studenttable.FIrstname
+   from studenttable
+   inner join cm
+   on cm.PersonalId=studenttable.Roll_no
+   order by cm.PersonalId;
     
+ select studenttable.Roll_no,cm.Firstname
+   from cm
+   inner join studenttable
+   on studenttable.Roll_no=cm.PersonalId
+   order by studenttable.Roll_no ;
   
 
     
